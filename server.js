@@ -1,7 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const exec = require('child_process').exec;
-const http = require('http');
 const request = require('request-promise');
 
 const HTTP_SERVER_PORT = 9001;
