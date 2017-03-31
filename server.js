@@ -48,5 +48,5 @@ function startPinging() {
     request(options).then(response => {
       console.log('response', response);
     }).catch(err => console.log('err', err));
-  }, 1000);
+  }, interval);
 }
