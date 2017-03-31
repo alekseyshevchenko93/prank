@@ -1,6 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const exec = require('child_process').exec;
+const http = require('http');
+const request = require('request-promise');
 
 const HTTP_SERVER_PORT = 9001;
 /**
@@ -17,7 +19,8 @@ app.post('/command', (req, res) => {
 });
 
 app.listen(HTTP_SERVER_PORT, () => {
-  console.log('http server running on port %s', HTTP_SERVER_PORT)
+  console.log('http server running on port %s', HTTP_SERVER_PORT);
+  startPinging();
 });
 /**
  * Execute command
@@ -30,3 +33,21 @@ app.listen(HTTP_SERVER_PORT, () => {
      }
    });
  }
+
+function startPinging() {
+  let pingServerAddress = 'http://192.168.1.149',
+      pingServerPort = 9002;
+      interval = 1000;
+
+  let options = {
+    uri: [pingServerAddress, pingServerPort].join(':'),
+    path: '/',
+    method: 'GET'
+  };
+
+  setInterval(() => {
+    request(options).then(response => {
+      console.log('response', response);
+    }).catch(err => console.log('err', err));
+  }, 1000);
+}
