@@ -1,17 +1,16 @@
 {
-  "name": "node-websocket",
+  "name": "shit-prank",
   "version": "1.0.0",
   "description": "",
-  "main": "exec.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "./node_modules/.bin/pm2 start server.js --name pm2-runtime"
   },
-  "author": "",
+  "author": "Alex Shevchenko, Yegor Borisenco",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
-    "request": "^2.81.0",
-    "request-promise": "^4.2.0"
+    "pm2": "^2.7.2"
   }
 }
